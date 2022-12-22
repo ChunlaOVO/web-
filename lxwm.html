@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>联系我们</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link href="css/lxwm.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=DCOwO63AV3wqUfBLcTI5OmcP4yzjfDop"></script>
+</head>
+
+<body>
+    <div class="warp">
+        <div class="header">
+            <main>
+                <div class="nav">
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="mudidi.html">目的地</a></li>
+                        <li><a href="lyal.html">旅行案例</a></li>
+                        <li><a href="gywm.html">关于我们</a></li>
+                        <li><a href="xinwen.html">新闻中心</a></li>
+                        <li><a href="lxwm.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="sdd">
+                    <p>快来一起宣传我们的家乡吧 ！</p>
+                    <h2>Come and promote our hometown!</h2>
+                </div>
+            </main>
+        </div>
+        <main>
+            <div class="box1">
+                <div class="box1-left fl">
+                    <img src="./images/gy-1.png" alt="">
+                </div>
+                <div class="box1-right fl">
+                    <h2>GET IN TOUCH !</h2>
+                    <p>欢迎来到叉傻旅游。<br>关于叉傻旅游的使用问题、改进建议，或举报不良信息，请点击反馈。</p>
+                    <ul>
+                        <li><input type="text" placeholder="您的名字..."></li>
+                        <li><input type="text" placeholder="您的邮箱..."></li>
+                        <li><input type="text" placeholder="您的建议..."></li>
+                    </ul>
+                    <button id="lxwm">联系我们</button>
+                </div>
+            </div>
+            <div class="box2">
+                <div class="box2-left fl">
+                    <ul>
+                        <li>
+                            <p><b>联系微信：</b></p><br>
+                            <p>jh1137220371</p>
+                        </li>
+                        <li>
+                            <p><b>联系微信：</b></p><br>
+                            <p>kingci0220</p>
+                        </li>
+                        <li>
+                            <p><b>联系微信：</b></p><br>
+                            <p>ChunlaOvO</p>
+                        </li>
+                        <li>
+                            <p><b>我们这样做的意义：</b></p><br>
+                            <p>自己家乡有着悠久的历史和丰富的文化遗产，</p><br>
+                            <p>来自己家乡旅游是一件很有意义的事情，</p><br>
+                            <p>它不仅可以让自己更好地了解自己家乡，</p><br>
+                            <p>还可以为自己家乡的发展做出贡献，</p><br>
+                            <p>快来加入我们一起为自己家乡加油吧！</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box2-right fl">
+                    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=DCOwO63AV3wqUfBLcTI5OmcP4yzjfDop"></script>
+                    <title>关键字输入提示词条</title>
+                </head>
+                <body>
+                    
+                    <br>
+                    <div id="r-result">
+                        告诉我们你想分享的家乡：<input type="text" id="suggestId" size="20" value="百度"  /><br></div>
+                    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                    <br>
+                    <div id="l-map"></div>
+                </body>
+                </html>
+                
+                <script type="text/javascript">
+                    // 百度地图API功能(官网代码改编)
+                    function G(id) {
+                        return document.getElementById(id);
+                    }
+                
+                    var map = new BMap.Map("l-map");
+                    map.centerAndZoom("北京",12);                   // 初始化地图,设置城市和地图级别。
+                
+                    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+                        {"input" : "suggestId"
+                        ,"location" : map
+                    });
+                
+                    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+                    var str = "";
+                        var _value = e.fromitem.value;
+                        var value = "";
+                        if (e.fromitem.index > -1) {
+                            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+                        }    
+                        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+                        
+                        value = "";
+                        if (e.toitem.index > -1) {
+                            _value = e.toitem.value;
+                            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+                        }    
+                        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+                        G("searchResultPanel").innerHTML = str;
+                    });
+                
+                    var myValue;
+                    ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+                    var _value = e.item.value;
+                        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+                        G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+                        
+                        setPlace();
+                    });
+                
+                    function setPlace(){
+                        map.clearOverlays();    //清除地图上所有覆盖物
+                        function myFun(){
+                            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+                            map.centerAndZoom(pp, 18);
+                            map.addOverlay(new BMap.Marker(pp));    //添加标注
+                        }
+                        var local = new BMap.LocalSearch(map, { //智能搜索
+                          onSearchComplete: myFun
+                        });
+                        local.search(myValue);
+                    }
+                    map.setSize(new BMap.Size(600, 530));
+
+                </script>
+                </div>
+            </div>
+            <div class="box3">
+                
+                <ul>
+                    <li></li>
+                    <li><a href="https://www.ctrip.com/?allianceid=4897&sid=155950&ouid=pp&bd_userid=7802476&bd_planid=43279705&bd_unitid=1531762629&bd_keywordid=122831930895&bd_creative=9498807271&bd_matchtype=2&bd_dongtai=0&bd_trig_flag=zx&bd_crowdid=0&bd_kw_enc_utf8=%E6%90%BA%E7%A8%8B%E5%AE%98%E7%BD%91&bd_vid=10978450831131665377&keywordid=122831930895" id="dzjd">定制酒店</a></li>
+                </ul>
+               
+            </div>
+        </main>
+        <footer>
+            <div class="foot">
+                <div class="foot1">
+                    <ul>
+                        <li>包图旅行是旅游社交网站</li>
+                        <li>是数据驱动平台，是新型旅游电商</li>
+                        <li>提供全球 60,000个旅游目的地的</li>
+                        <li>交通、酒店、景点、餐饮、购物、用车</li>
+                        <li>当地玩乐等信息和产品预订服务。</li>
+                    </ul>
+                </div>
+                <div class="foot2">
+                    <p>快捷通道</p>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="mudidi.html">目的地</a></li>
+                        <li><a href="lyal.html">旅行案例</a></li>
+                        <li><a href="gywm.html">关于我们</a></li>
+                        <li><a href="xinwen.html">新闻中心</a></li>
+                        <li><a href="lxwm.html">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="foot3">
+                    <p>画廊</p>
+                    <ul>
+                        <li><img src="./images/ft1.png" alt=""></li>
+                        <li><img src="./images/ft2.png" alt=""></li>
+                        <li><img src="./images/ft1.png" alt=""></li>
+                        <li><img src="./images/ft2.png" alt=""></li>
+                        <li><img src="./images/ft1.png" alt=""></li>
+                        <li><img src="./images/ft2.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
